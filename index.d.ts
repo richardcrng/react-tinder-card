@@ -1,20 +1,20 @@
 import React from 'react'
 
-declare type Direction = 'left' | 'right' | 'up' | 'down'
-declare type SwipeHandler = (direction: Direction) => void
-declare type CardLeftScreenHandler = (direction: Direction) => void
+export type Direction = 'left' | 'right' | 'up' | 'down'
+export type SwipeHandler = (direction: Direction) => void
+export type CardLeftScreenHandler = (direction: Direction) => void
 
-declare interface API {
+export interface SwipeAPI {
   /**
    * Programmatically trigger a swipe of the card in one of the valid directions `'left'`, `'right'`, `'up'` and `'down'`. This function, `swipe`, can be called on a reference of the TinderCard instance. Check the [example](https://github.com/3DJakob/react-tinder-card-demo/blob/master/src/examples/Advanced.js) code for more details on how to use this.
    *
    * @param dir The direction in which the card should be swiped. One of: `'left'`, `'right'`, `'up'` and `'down'`.
    */
-  swipe (dir?: Direction): Promise<void>
+  swipe(dir?: Direction): Promise<void>
 }
 
-declare interface Props {
-  ref?: React.Ref<API>
+export interface TinderCardProps {
+  ref?: React.Ref<SwipeAPI>
 
   /**
    * Whether or not to let the element be flicked away off-screen after a swipe.
@@ -38,7 +38,7 @@ declare interface Props {
    *
    * @default []
    */
-  preventSwipe?: string[]
+  preventSwipe?: Direction[]
 
   /**
    * HTML attribute class
@@ -46,6 +46,6 @@ declare interface Props {
   className?: string
 }
 
-declare const TinderCard: React.FC<Props>
+declare const TinderCard: React.FC<TinderCardProps>
 
 export = TinderCard
